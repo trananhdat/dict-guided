@@ -23,7 +23,7 @@ _PREDEFINED_SPLITS_TEXT = {
     "syntext1_train": ("synthetic/train_images", "synthetic/train.json"),
     "syntext2_train": ("syntext2/images", "syntext2/annotations/train.json"),
     "mltbezier_word_train": ("mlt2017/images", "mlt2017/annotations/train.json"),
-    "vintext_train": ("ptittext/train_image", "ptittext/train.json"),
+    "vintext_train": ("ptittext/train_images", "ptittext/train.json"),
     "vintext_val": ("ptittext/test_image", "ptittext/test.json"),
 }
 
