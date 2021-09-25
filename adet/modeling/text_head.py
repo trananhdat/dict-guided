@@ -260,7 +260,7 @@ class TextHead(nn.Module):
 
         self.recognizer = build_recognizer(cfg, recognizer)
 
-        self.dictionary = open("vn_dictionary.txt").read().replace("\n\n", "\n").split("\n")
+        self.dictionary = open("ptit_dictionary.txt").read().replace("\n\n", "\n").split("\n")
         self.trie = Trie(self.dictionary)
 
     def forward(self, images, features, proposals, targets=None):

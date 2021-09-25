@@ -231,7 +231,7 @@ class ATTPredictor(nn.Module):
         self.criterion = torch.nn.NLLLoss()
         self.attention = Attention(cfg, in_channels)
         self.teach_prob = 0.5
-        self.dictionary = open("vn_dictionary.txt").read().replace("\n\n", "\n").split("\n")
+        self.dictionary = open("ptit_dictionary.txt").read().replace("\n\n", "\n").split("\n")
         # self.dictionary.remove('')
         self.num_candidates = 1
         self.trie = Trie(self.dictionary)

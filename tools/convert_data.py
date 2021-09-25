@@ -63,17 +63,37 @@ def correct_tone_position(word):
     return first_ord_char
 
 
-def decoder(recognition):
-    for char in TARGETS:
-        recognition = recognition.replace(char, SOURCES[TARGETS.index(char)])
-    replace_char = correct_tone_position(recognition)
-    if recognition[-1] in TONES:
-        tone = recognition[-1]
-        recognition = recognition[:-1]
-        for group in groups:
-            if replace_char in group:
-                recognition = recognition.replace(replace_char, group[TONES.index(tone)])
-    return recognition
-
+# def decoder(recognition):
+#     for char in TARGETS:
+#         recognition = recognition.replace(char, SOURCES[TARGETS.index(char)])
+#     replace_char = correct_tone_position(recognition)
+#     if recognition[-1] in TONES:
+#         tone = recognition[-1]
+#         recognition = recognition[:-1]
+#         for group in groups:
+#             if replace_char in group:
+#                 recognition = recognition.replace(replace_char, group[TONES.index(tone)])
+#     return recognition
+def decoder(recognitions):
+    recognitions = recognitions.split(' ')
+    list_recognition = ''
+    for recognition in recognitions:
+        for char in TARGETS:
+            recognition = recognition.replace(char, SOURCES[TARGETS.index(char)])
+        if len(recognition) < 1:
+            list_recognition += recognition + ' '
+            continue
+        if recognition[-1] in TONES:
+            if len(recognition) < 2:
+                list_recognition += recognition + ' '
+                continue
+            replace_char = correct_tone_position(recognition)
+            tone = recognition[-1]
+            recognition = recognition[:-1]
+            for group in groups:
+                if replace_char in group:
+                    recognition = recognition.replace(replace_char, group[TONES.index(tone)])
+        list_recognition += recognition + ' '
+    return list_recognition
 
 print(decoder(full_parse("Rồng")))
