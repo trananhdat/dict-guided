@@ -303,7 +303,11 @@ class TextHead(nn.Module):
                     word = []
                     # print(can[0])
                     for char in can[0]:
-                        word.append(CTLABELS.index(char))
+                        try:
+                            word.append(CTLABELS.index(char))
+                        except Exception as e:
+                            print(e)
+                            continue
                     while len(word) < 25:
                         word.append(104)
                     word = word[:25]
