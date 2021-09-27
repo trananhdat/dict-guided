@@ -360,7 +360,11 @@ class ATTPredictor(nn.Module):
                 for can in candidates:
                     word = []
                     for char in can[0]:
-                        word.append(CTLABELS.index(char))
+                        try:
+                            word.append(CTLABELS.index(char))
+                        except Exception as e:
+                            print(e)
+                            continue
                     while len(word) < 25:
                         word.append(105)
                     word = word[:25]
