@@ -343,10 +343,11 @@ def evaluate_method(gtFilePath, submFilePath, evaluationParams):
             # On word spotting we will filter some transcriptions with special characters
             if evaluationParams["WORD_SPOTTING"]:
                 if dontCare == False:
-                    if include_in_dictionary(transcription) == False:
-                        dontCare = True
-                    else:
-                        transcription = include_in_dictionary_transcription(transcription)
+                    # For PTIT dict
+#                     if include_in_dictionary(transcription) == False:
+#                         dontCare = True
+#                     else:
+                    transcription = include_in_dictionary_transcription(transcription)
 
             gtTrans.append(transcription)
             if dontCare:
